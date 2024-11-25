@@ -1,0 +1,5 @@
+.Home {
+  grid-area: main;
+  padding: 10px;
+  margin: 15px;
+}

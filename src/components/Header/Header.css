@@ -1,0 +1,11 @@
+.Header {
+  grid-area: head;
+  padding: 10px;
+  margin: 5px;
+  background: rgb(32, 35, 41);
+}
+
+.Header h1,
+.Header h3 {
+  color: rgb(236, 236, 236);
+}

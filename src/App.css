@@ -1,3 +1,11 @@
 .App {
-  text-align: center;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas:
+    "head head head"
+    "categories main sidebar"
+    "footer footer footer";
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
 }
