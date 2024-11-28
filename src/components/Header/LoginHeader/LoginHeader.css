@@ -1,0 +1,26 @@
+.Login-Header .Shop-Login {
+  height: 40px;
+  opacity: 0.85;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.Login-Header .Shop-Login:hover {
+  opacity: 1;
+}
+
+.Login-Header .Shop-Login-User {
+  font-weight: 600;
+  color: rgb(236, 236, 236);
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 95px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /* position: absolute;
+  top: 74px;
+  right: 136px; */
+}

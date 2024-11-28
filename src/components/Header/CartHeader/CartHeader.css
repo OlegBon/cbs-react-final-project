@@ -1,0 +1,18 @@
+.Cart-Header .Shop-Cart {
+  height: 40px;
+  opacity: 0.85;
+  cursor: pointer;
+}
+
+.Cart-Header .Shop-Cart:hover {
+  opacity: 1;
+}
+
+.Cart-Header .Products-In-Cart {
+  font-weight: 600;
+  color: rgb(32, 35, 41);
+  font-size: 20px;
+  position: absolute;
+  top: 36px;
+  right: 40px;
+}
