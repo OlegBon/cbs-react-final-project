@@ -1,4 +1,4 @@
-.modalWind {
+.Modal-Wind {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,7 +7,7 @@
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.modalWind i {
+.Modal-Wind i {
   color: rgb(100, 100, 100);
   position: fixed;
   top: 10px;
@@ -15,8 +15,8 @@
   cursor: pointer;
 }
 
-.modalWind-content {
-  max-width: 450px;
+.Modal-Wind-Content {
+  max-width: 350px;
   width: 100%;
   position: fixed;
   top: 50%;
@@ -27,32 +27,14 @@
   border-radius: 15px;
 }
 
-.modalWind-content h1 {
-  text-align: center;
-}
-
-.btns button {
-  width: 100%;
-  margin: 0.3rem;
+.Logout-Block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   padding: 10px;
-  border-radius: 6px;
-  border: 1px solid;
-  cursor: pointer;
 }
 
-.accept {
-  color: #fff;
-  background-color: rgb(42, 102, 188);
-}
-
-.accept:hover {
-  background-color: rgb(14, 71, 149);
-}
-
-.reject {
-  color: rgb(100, 100, 100);
-}
-
-.reject:hover {
-  background-color: rgb(194, 192, 192);
+.Logout-Block button:hover {
+  background-color: rgb(32, 35, 41);
+  color: rgb(236, 236, 236);
 }

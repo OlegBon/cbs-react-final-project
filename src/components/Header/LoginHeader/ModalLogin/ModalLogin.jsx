@@ -1,71 +1,40 @@
-import { auth } from "../../../../firebase-config";
-import "./ModalLogin.css";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-
-const ModalLogin = ({
-  call,
-  onDestroy,
-  email,
-  password,
-  setHasAccount,
   setEmail,
   setPassword,
-}) => {
-  const signIn = () => {
-    if (!email || !password) {
-      console.log("Email And Password Are Required!");
-      return;
-    }
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        console.log("Successfully Signed In!");
-        setHasAccount(true);
-      })
-      .catch((error) => console.error("Error Signing In:", error));
-  };
+  closeModal,
+} from "../../../../data/reducers/modalReducer";
+import { useAuthHandlers } from "./useAuthHandlers/useAuthHandlers";
+import LoginBlock from "./LoginBlock/LoginBlock";
+import "./ModalLogin.css";
 
-  const createAccount = () => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        console.log("Successfully Created Account");
-        setHasAccount(true);
-      })
-      .catch((error) => console.error("Error Creating Account:", error));
-  };
+const ModalLogin = () => {
+  const dispatch = useDispatch();
+  const { email, password, hasAccount } = useSelector((state) => state.modal);
 
-  if (!call) {
-    return null;
-  }
+  const { signIn, createAccount, logOut } = useAuthHandlers(email, password);
 
   return (
-    <div className="modalWind" onClick={onDestroy}>
-      <div className="modalWind-content" onClick={(e) => e.stopPropagation()}>
-        <i className="closeModalWind" onClick={onDestroy}>
+    <div className="Modal-Wind" onClick={() => dispatch(closeModal())}>
+      <div className="Modal-Wind-Content" onClick={(e) => e.stopPropagation()}>
+        <i className="Close-Modal-Wind" onClick={() => dispatch(closeModal())}>
           X
         </i>
-        <div className="login_block">
-          <input
-            type="text"
-            id="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+        {hasAccount ? (
+          <div className="Logout-Block">
+            <button onClick={logOut}>Log Out</button>
+          </div>
+        ) : (
+          <LoginBlock
+            email={email}
+            password={password}
+            setEmail={(value) => dispatch(setEmail(value))}
+            setPassword={(value) => dispatch(setPassword(value))}
+            signIn={signIn}
+            createAccount={createAccount}
           />
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button onClick={signIn}>Sign In</button>
-          <button onClick={createAccount}>Create Account</button>
-        </div>
+        )}
       </div>
     </div>
   );

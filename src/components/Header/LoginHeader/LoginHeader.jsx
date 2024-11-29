@@ -1,46 +1,41 @@
 import "./LoginHeader.css";
+import shopNoLogin from "../../../assets/shop-no-login.png";
 import shopLogin from "../../../assets/shop-login.png";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ModalLogin from "./ModalLogin/ModalLogin";
 import { database } from "../../../firebase-config";
 import { off, onValue, ref } from "firebase/database";
+import { useDispatch, useSelector } from "react-redux";
+import { openModal } from "../../../data/reducers/modalReducer";
+import { setData } from "../../../data/reducers/firebaseReducer";
 
 const LoginHeader = () => {
-  // Modal
-  const [modalState, setModalState] = useState(false);
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [hasAccount, setHasAccount] = useState(false);
-  const [data, setData] = useState({});
+  const dispatch = useDispatch();
+  const { modalState, hasAccount, email } = useSelector((state) => state.modal);
 
   useEffect(() => {
     const rootRef = ref(database, "/");
     onValue(rootRef, (snapshot) => {
       const data = snapshot.val();
-      setData(data || {});
+      dispatch(setData(data || {}));
     });
     return () => off(rootRef);
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="Login-Header">
-      <ModalLogin
-        call={modalState}
-        onDestroy={() => setModalState(false)}
-        email={email}
-        password={password}
-        setHasAccount={setHasAccount}
-        setEmail={setEmail}
-        setPassword={setPassword}
-      />
+      {modalState && <ModalLogin />}
+
       <img
-        src={shopLogin}
+        src={hasAccount ? shopLogin : shopNoLogin}
         className="Shop-Login"
         alt="Shop Login"
-        onClick={() => setModalState(true)}
+        onClick={() => dispatch(openModal())}
       />
-      <p className="Shop-Login-User">not logged in shop</p>
+
+      <p className="Shop-Login-User">
+        {hasAccount ? email || "logged in" : "not logged in shop"}
+      </p>
     </div>
   );
 };

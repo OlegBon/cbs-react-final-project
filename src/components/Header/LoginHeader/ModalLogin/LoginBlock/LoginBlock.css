@@ -1,0 +1,16 @@
+.Login-Block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.Login-Block input[type="password"],
+.Login-Block button {
+  margin-top: 10px;
+}
+
+.Login-Block button:hover {
+  background-color: rgb(32, 35, 41);
+  color: rgb(236, 236, 236);
+}
