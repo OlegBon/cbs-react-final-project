@@ -1,0 +1,23 @@
+.Container-Weather {
+  padding: 8px;
+}
+
+.Container-Weather p,
+.Container-Weather h3 {
+  padding: 0;
+  margin: 4px;
+}
+
+.Container-Weather p {
+  font-size: 14px;
+}
+
+.Container-Weather h3 {
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.Container-Weather .City-Weather,
+.Container-Weather .Info-Weather {
+  margin-top: 20px;
+}
