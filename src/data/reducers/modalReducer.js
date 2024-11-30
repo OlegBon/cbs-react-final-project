@@ -14,6 +14,7 @@ const modalSlice = createSlice({
     },
     closeModal: (state) => {
       state.modalState = false;
+      state.password = "";
     },
     setEmail: (state, action) => {
       state.email = action.payload;
