@@ -42,6 +42,7 @@ export const useAuthHandlers = (email, password) => {
       .then(() => {
         console.log("Successfully Logged Out");
         dispatch(setHasAccount(false));
+        dispatch(closeModal());
       })
       .catch((error) => console.error("Error Logging Out:", error));
   };
