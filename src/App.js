@@ -6,6 +6,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Home from "./Pages/Home/Home";
 import Cart from "./Pages/Cart/Cart";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import CartProduct from "./Pages/Home/Products/CartProdact/CartProduct";
 
 const Layout = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
       children: [
         { path: "/", element: <Home /> },
         { path: "/cart", element: <Cart /> },
+        { path: "/products/:formattedTitle", element: <CartProduct /> },
       ],
     },
   ]);
