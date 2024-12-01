@@ -1,21 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./Sidebar.css";
-import { useEffect, useRef } from "react";
-import { fetchWeather, setTown } from "../../data/reducers/weatherReducer";
+import { useEffect } from "react";
+import {
+  DEFAULT_CITY,
+  fetchWeather,
+  setTown,
+} from "../../data/reducers/weatherReducer";
 import WeatherInfo from "./WeatherInfo/WeatherInfo";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
   const { data, town, loading, error } = useSelector((state) => state.weather);
 
-  const isFirstRender = useRef(true);
-
   useEffect(() => {
-    if (isFirstRender.current) {
-      dispatch(fetchWeather(town));
-      isFirstRender.current = false;
-    }
-  }, [dispatch, town]);
+    dispatch(fetchWeather(DEFAULT_CITY));
+  }, [dispatch]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && town.trim()) {
@@ -35,8 +34,11 @@ const Sidebar = () => {
         />
       </div>
       {loading && <p>Loading...</p>}
-      {error && <p className="Error-Message">{error}</p>}
-      <WeatherInfo data={data} />
+      {error ? (
+        <p className="Error-Message">{error}</p>
+      ) : (
+        <WeatherInfo data={data} />
+      )}
     </div>
   );
 };

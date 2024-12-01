@@ -2,11 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { url } from "../../openweathermap-config";
 
+export const DEFAULT_CITY = "Kyiv";
+
 const weatherReducer = createSlice({
   name: "weather",
   initialState: {
     data: {},
-    town: "Kyiv",
+    town: DEFAULT_CITY,
     loading: false,
     error: "",
   },
