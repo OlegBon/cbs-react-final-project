@@ -7,6 +7,7 @@ import Home from "./Pages/Home/Home";
 import Cart from "./Pages/Cart/Cart";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import CartProduct from "./Pages/Home/Products/CartProdact/CartProduct";
+import CartCategory from "./components/Categories/CartCategory/CartCategory";
 
 const Layout = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         { path: "/", element: <Home /> },
         { path: "/cart", element: <Cart /> },
         { path: "/products/:formattedTitle", element: <CartProduct /> },
+        { path: "/products/category/:category", element: <CartCategory /> },
       ],
     },
   ]);

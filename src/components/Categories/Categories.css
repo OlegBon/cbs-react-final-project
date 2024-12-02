@@ -6,3 +6,17 @@
   background: rgb(247, 247, 247);
   /* height: 700px; */
 }
+
+.Categories ul {
+  margin: 0;
+  padding: 0 10px;
+}
+
+.Categories li {
+  list-style-type: none;
+  font-size: 16px;
+}
+
+.Categories a {
+  text-decoration: none;
+}
