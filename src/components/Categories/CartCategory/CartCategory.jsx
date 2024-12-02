@@ -64,13 +64,18 @@ const CartCategory = () => {
 
   return (
     <div className="Cart-Category">
-      {products.length > 0 ? (
-        products.map((product) => (
-          <Product key={product.id} product={product} />
-        ))
-      ) : (
-        <p>No products found in this category.</p>
-      )}
+      <h1>
+        {category.charAt(0).toUpperCase() + category.slice(1).replace("-", " ")}
+      </h1>
+      <div className="Cart-Category-Products">
+        {products.length > 0 ? (
+          products.map((product) => (
+            <Product key={product.id} product={product} />
+          ))
+        ) : (
+          <p>No products found in this category.</p>
+        )}
+      </div>
     </div>
   );
 };

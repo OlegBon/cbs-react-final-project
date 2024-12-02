@@ -1,4 +1,12 @@
 .Cart-Category {
+  padding: 0 20px;
+}
+
+.Cart-Category p {
+  padding: 20px 0;
+}
+
+.Cart-Category-Products {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;

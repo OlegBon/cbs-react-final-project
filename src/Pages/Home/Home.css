@@ -4,10 +4,6 @@
   margin: 15px;
 }
 
-/* .Home .Shop-Products {
-  width: 80%;
-  padding: 30px;
-  border: 1px solid black;
-  border-radius: 10px;
-  overflow: auto;
-} */
+.Home h1 {
+  margin: 0;
+}
