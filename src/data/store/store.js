@@ -4,6 +4,7 @@ import firebaseReducer from "../reducers/firebaseReducer";
 import weatherReducer from "../reducers/weatherReducer";
 import productsReducer from "../reducers/productsReducer";
 import cartProductReducer from "../reducers/cartProductReducer";
+import shoppingCartReducer from "../reducers/shoppingCartReducer";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     weather: weatherReducer,
     products: productsReducer,
     cartProduct: cartProductReducer,
+    shoppingCart: shoppingCartReducer,
   },
 });
 

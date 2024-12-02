@@ -3,3 +3,12 @@
   padding: 10px;
   margin: 15px;
 }
+
+.Total-Price h2 {
+  font-size: 20px;
+}
+
+.Cart button:hover {
+  background-color: rgb(32, 35, 41);
+  color: rgb(236, 236, 236);
+}

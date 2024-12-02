@@ -5,10 +5,12 @@ import { useParams, useLocation } from "react-router-dom";
 import { setProduct } from "../../../../data/reducers/cartProductReducer";
 import { database } from "../../../../firebase-config";
 import { ref, get } from "firebase/database";
+import ButtonAddToCart from "../Product/ButtonAddToCart/ButtonAddToCart";
 
 const CartProduct = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.cartProduct.product);
+  const isLoggedIn = useSelector((state) => state.modal.hasAccount);
   const { formattedTitle } = useParams();
   const location = useLocation();
   const originalTitle = location.state?.originalTitle || formattedTitle;
@@ -54,7 +56,7 @@ const CartProduct = () => {
         <h2>{product.title}</h2>
         <h3>Price: {product.price}$</h3>
         <p>{product.description}</p>
-        <button>Add to cart</button>
+        {isLoggedIn && <ButtonAddToCart product={product} />}
       </div>
     </div>
   );

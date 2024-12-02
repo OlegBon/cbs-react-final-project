@@ -1,0 +1,32 @@
+.Product-In-Cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.Product-In-Cart img {
+  width: 100px;
+  margin: 20px;
+}
+
+.Product-In-Cart-Info {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.Product-In-Cart h2 {
+  font-size: 20px;
+}
+
+.Product-In-Cart h3 {
+  font-size: 18px;
+}
+
+.Drop-Product {
+  max-height: 36px;
+  padding: 10px;
+}

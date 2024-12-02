@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import "./Product.css";
 import { useNavigate } from "react-router-dom";
 import formatTitleToURL from "../../../../utils/formatTitleToURL";
+import ButtonAddToCart from "./ButtonAddToCart/ButtonAddToCart";
 
 const Product = ({ product }) => {
   const navigate = useNavigate();
@@ -25,8 +26,10 @@ const Product = ({ product }) => {
       </div>
       <h2>{product.title}</h2>
       <h3>{product.price}$</h3>
-      {isLoggedIn && <button>Add to Cart</button>}
-      <button onClick={showMoreHandler}>Show more info</button>
+      {isLoggedIn && <ButtonAddToCart product={product} />}
+      <button className="Button-Show-More-Info" onClick={showMoreHandler}>
+        Show more info
+      </button>
     </div>
   );
 };
