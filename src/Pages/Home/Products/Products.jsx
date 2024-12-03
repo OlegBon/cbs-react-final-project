@@ -9,10 +9,16 @@ import {
 } from "../../../data/reducers/productsReducer";
 import Product from "./Product/Product";
 
-const Products = ({ products: externalProducts }) => {
+const Products = ({
+  products: externalProducts,
+  paginationPage,
+  setPaginationPage,
+}) => {
   const dispatch = useDispatch();
   const reduxProducts = useSelector((state) => state.products.products);
-  const currentPage = useSelector((state) => state.products.currentPage);
+  const globalCurrentPage = useSelector((state) => state.products.currentPage);
+
+  const currentPage = paginationPage ?? globalCurrentPage;
   const itemsPerPage = useSelector((state) => state.products.itemsPerPage);
 
   const products = externalProducts || reduxProducts;
@@ -25,11 +31,19 @@ const Products = ({ products: externalProducts }) => {
   );
 
   const nextPage = () => {
-    dispatch(setCurrentPage(currentPage + 1));
+    if (setPaginationPage) {
+      setPaginationPage(currentPage + 1);
+    } else {
+      dispatch(setCurrentPage(globalCurrentPage + 1));
+    }
   };
 
   const prevPage = () => {
-    dispatch(setCurrentPage(currentPage - 1));
+    if (setPaginationPage) {
+      setPaginationPage(currentPage - 1);
+    } else {
+      dispatch(setCurrentPage(globalCurrentPage - 1));
+    }
   };
 
   useEffect(() => {
