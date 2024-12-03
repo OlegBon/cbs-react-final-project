@@ -4,3 +4,7 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
+.Products-All {
+  min-height: 420px;
+}

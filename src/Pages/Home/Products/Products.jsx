@@ -46,6 +46,17 @@ const Products = ({
     }
   };
 
+  const SkeletonLoader = ({ count }) => (
+    <div className="Products-Skeleton">
+      {Array.from({ length: count }).map((_, index) => (
+        <div key={index} className="Skeleton-Item">
+          <div className="Skeleton-Thumbnail"></div>
+          <div className="Skeleton-Text"></div>
+        </div>
+      ))}
+    </div>
+  );
+
   useEffect(() => {
     if (!externalProducts) {
       const productsRef = ref(database, "/products");
@@ -72,7 +83,8 @@ const Products = ({
             <Product key={product.id} product={product} />
           ))
         ) : (
-          <p>No products found or loading...</p>
+          // <p>No products found or loading...</p>
+          <SkeletonLoader count={itemsPerPage} />
         )}
       </div>
 
