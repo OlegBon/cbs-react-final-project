@@ -1,9 +1,20 @@
-.Home {
-  grid-area: main;
-  padding: 10px;
-  margin: 15px;
+html {
+  scroll-behavior: smooth;
 }
 
-/* .Home h1 {
-  margin: 0;
-} */
+.Home {
+  grid-area: main;
+  margin: 5px;
+}
+
+.Banner-Home .Img-Banner-Home {
+  max-width: 100%;
+  padding: 0;
+}
+
+.About-Us,
+.Text,
+.Shop-Products,
+.Last {
+  text-align: center;
+}
