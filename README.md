@@ -47,7 +47,7 @@
     npm i
    ```
 
-3. Створіть файл .env у корені проєкту і додайте такі змінні оточення (отримайте їх із Firebase - https://console.firebase.google.com/):
+3. Створіть файл .env у корені проєкту і додайте такі змінні оточення (отримайте їх із Firebase - https://console.firebase.google.com/ та api.openweathermap.org):
 
    ```
    REACT_APP_FIREBASE_API_KEY=your-api-key
