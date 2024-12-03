@@ -1,70 +1,151 @@
-# Getting Started with Create React App
+# CBS React Final Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Цей проект є React-додатком, створеним в рамках фінального проекту курсу CBS React. Він інтегрує Firebase та інші бібліотеки для створення повноцінного веб-додатку. У проєкті реалізовано читання даних з бази даних Firebase, а також авторизація.
 
-## Available Scripts
+## Опис
 
-In the project directory, you can run:
+Цей проєкт являє собою концепт інтернет-магазину, у якому користувачі можуть авторизуватися через Firebase і взаємодіяти з базою даних. Додаток дає змогу:
 
-### `npm start`
+- Створити акаунт для роботи з Firebase.
+- Авторизуватися через Firebase (якщо вже є акаунт).
+- Читати дані (каталог товарів) в реальному часі (з використанням Firebase Realtime Database).
+- Получати погоду для вказаного міста (api.openweathermap.org)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Технології
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React** — для побудови користувацького інтерфейсу.
+- **Firebase** — для аутентифікації користувачів і роботи з базою даних.
+- **@reduxjs/toolkit** — для управління станом компонентів.
 
-### `npm test`
+## Початок роботи
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Слідуйте цим інструкціям для налаштування та запуску проекту локально.
 
-### `npm run build`
+### Передумови
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js (v12 або новіше)
+- npm (v6 або новіше)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Встановлення
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Клонуйте репозиторій:
 
-### `npm run eject`
+   ```
+   git clone https://github.com/OlegBon/cbs-react-final-project.git
+   cd cbs-react-final-project
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Встановіть залежності:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   або
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```
+    npm i
+   ```
 
-## Learn More
+3. Створіть файл .env у корені проєкту і додайте такі змінні оточення (отримайте їх із Firebase - https://console.firebase.google.com/):
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```
+   REACT_APP_FIREBASE_API_KEY=your-api-key
+   REACT_APP_FIREBASE_AUTH_DOMAIN=your-auth-domain
+   REACT_APP_FIREBASE_DATABASE_URL=your-database-url
+   REACT_APP_FIREBASE_PROJECT_ID=your-project-id
+   REACT_APP_FIREBASE_STORAGE_BUCKET=your-storage-bucket
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+   REACT_APP_FIREBASE_APP_ID=your-app-id
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   REACT_APP_OPENWEATHERMAP_APPID=your-app-id
+   ```
 
-### Code Splitting
+   **Примітка.** Якщо з firebase при перегляді версіі чи init, чи ще з якоюсь командою отримаємо помилку:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   ```
+   firebase : The term 'firebase' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+   At line:1 char:1
+   + firebase init
+   + ~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (firebase:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+   ```
 
-### Analyzing the Bundle Size
+   Треба перевірити поточну політику виконання. Зазвичай її встановлено в Restricted, що забороняє запуск будь-яких скриптів.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   ```
+   Get-ExecutionPolicy
+   ```
 
-### Making a Progressive Web App
+   Тимчасово дозволити виконання скриптів
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+   ```
 
-### Advanced Configuration
+   Якщо потрібно дозволити постійно
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   ```
+   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+   ```
 
-### Deployment
+   Далі робимо що нап потрібно. Дивимось версію, встановлюємо Firebase CLI, підключаємось до аккаунту,
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   ```
+   firebase --version
+   npm install -g firebase-tools
+   firebase login
+   firebase init
+   ```
 
-### `npm run build` fails to minify
+   Та потім повертаємо політику виконання в початковий стан, щоб система залишалася захищеною
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Restricted
+   ```
+
+   **Альтернатива: Використовуємо cmd замість PowerShell**
+
+4. Запустіть проєкт:
+
+   ```
+   npm start
+   ```
+
+   або
+
+   ```
+    npm run start
+   ```
+
+5. Відкрийте браузер і перейдіть на сторінку http://localhost:3000.
+
+## Структура проекту
+
+- **src/assets/** — фото для проекту.
+- **src/components/** — компоненти для відображення користувацького інтерфейсу.
+- **src/data/** — store та reducers.
+- **src/Pages/** — сторінки проекту (Home та Cart).
+- **src/utils/** — частина коду винесена у окрему утілиту для того щоб зробити з title url для товару).
+- **src/firebase-config.js** — конфігурація бази даних та ініціалізація додатків.
+- **src/openweathermap-config.js** — конфігурація api.openweathermap.org для віджета погоди у Sidebar.
+- **src/App.js** — основний компонент програми.
+- **src/App.css** — стилі для додатка.
+
+## Як використовувати
+
+Під час першого запуску програми ви можете створити акаунт або увійти в систему з використанням Firebase Authentication - у Header піктограма логіну.
+Кнопка Add to Cart та вміст карзини з'являється тільки для авторизированих користувачів. На головній сторинці є каталог товарів з пагінацією. Також можемо обрати окрему категорію та бачити тільки товари цієї категорії (ліворуч). Є можливість подивитися погоду в потрібному місті (за замовчуванням це Київ) - праворуч. Маємо можливість передивитися товар подробніше або додати його у корзину. У корзині маємо можливість збільшити або зменшити кількість товару та бачимо підсумок.
+
+## Вклад
+
+Якщо у вас є ідеї для поліпшення проекту, будь ласка, створіть pull request або відкрийте issue.
+
+## Подяки
+
+Віталій Мазяр, Богдан Мартиненко, Олексій Татаренков - дякую за навчання, передачу знань та навичок, завдання потрібних векторів
+
+## Ліцензія
+
+Цей проєкт ліцензується на умовах ліцензії MIT. Докладніше див. у файлі LICENSE.
