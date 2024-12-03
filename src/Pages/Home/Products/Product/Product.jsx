@@ -11,6 +11,46 @@ const Product = ({ product }) => {
   const showMoreHandler = () => {
     const formattedTitle = formatTitleToURL(product.title);
 
+    let recentlyViewed =
+      JSON.parse(localStorage.getItem("recentlyViewed")) || [];
+
+    const isProductInList = recentlyViewed.some(
+      (item) => item.id === product.id
+    );
+
+    if (!isProductInList) {
+      const fullProduct = {
+        id: product.id,
+        title: product.title,
+        thumbnail: product.thumbnail,
+        price: product.price,
+        stock: product.stock,
+        rating: product.rating,
+        category: product.category,
+        description: product.description,
+        returnPolicy: product.returnPolicy,
+      };
+
+      recentlyViewed.unshift(fullProduct);
+
+      if (recentlyViewed.length > 10) recentlyViewed.pop();
+    } else {
+      recentlyViewed = recentlyViewed.filter((item) => item.id !== product.id);
+      recentlyViewed.unshift({
+        id: product.id,
+        title: product.title,
+        thumbnail: product.thumbnail,
+        price: product.price,
+        stock: product.stock,
+        rating: product.rating,
+        category: product.category,
+        description: product.description,
+        returnPolicy: product.returnPolicy,
+      });
+    }
+
+    localStorage.setItem("recentlyViewed", JSON.stringify(recentlyViewed));
+
     navigate(`/products/${formattedTitle}`, {
       state: { originalTitle: product.title },
     });

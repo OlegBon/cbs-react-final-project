@@ -7,12 +7,18 @@ const ButtonAddToCart = ({ product }) => {
   const productsInCart = useSelector(
     (state) => state.shoppingCart.productsInCart
   );
+  const reduxProducts = useSelector((state) => state.products.products);
+
+  const fullProduct =
+    reduxProducts.find((item) => item.id === product.id) || product;
 
   const AddToCartHandler = () => {
-    const productInCart = productsInCart.find((item) => item.id === product.id);
+    const productInCart = productsInCart.find(
+      (item) => item.id === fullProduct.id
+    );
 
     if (!productInCart) {
-      dispatch(addProductToCart(product));
+      dispatch(addProductToCart(fullProduct));
     }
   };
 

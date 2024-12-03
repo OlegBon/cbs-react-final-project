@@ -67,6 +67,25 @@ const CartCategory = () => {
       <h1>
         {category.charAt(0).toUpperCase() + category.slice(1).replace("-", " ")}
       </h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
+        voluptates dicta minima eos hic, voluptatem eveniet possimus quam
+        laborum molestias qui tempora esse. Odit, tempore iste? Quaerat suscipit
+        rem aspernatur blanditiis tempore dolore esse a totam odit at nam fugiat
+        hic quos, ut labore natus accusantium voluptates. Nemo dignissimos
+        dolores optio, cupiditate repellendus exercitationem modi. Voluptas enim
+        temporibus, quas distinctio praesentium sit. Fugiat quis adipisci sed
+        voluptates, quia sapiente aliquid esse blanditiis accusamus quidem
+        architecto accusantium nulla dolores ipsum non veniam doloribus facilis
+        placeat, quos magni vitae? Iure est nisi adipisci fugiat, veritatis
+        culpa dignissimos nemo labore sequi magni! Iure minima accusantium error
+        voluptate saepe ullam, cum velit esse ipsam? Voluptatibus sequi
+        repudiandae maxime itaque vero distinctio porro placeat, perferendis
+        accusantium doloremque officia possimus mollitia dolore quia velit
+        autem, commodi numquam! Officia quaerat magni sapiente odit facere
+        consectetur earum id provident neque commodi sit, consequatur ratione
+        rem beatae aliquam perspiciatis.
+      </p>
       <div className="Cart-Category-Products">
         {products.length > 0 ? (
           products.map((product) => (
